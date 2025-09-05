@@ -1,5 +1,4 @@
 "use client";
-
 import { SidebarIcon } from "lucide-react";
 
 import { SearchForm } from "./search-form";
@@ -14,15 +13,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useSidebar } from "@/components/ui/sidebar";
-
+import { usePathname } from "next/navigation";
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar();
+  const pathname = usePathname();
+  const currentTab = pathname.split("/")[1];
 
   return (
     <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b">
       <div className="flex h-(--header-height) w-full items-center gap-2 px-4">
         <Button
-          className="h-8 w-8"
+          className="h-8 w-8 rotate-180"
           variant="ghost"
           size="icon"
           onClick={toggleSidebar}
@@ -33,16 +34,16 @@ export function SiteHeader() {
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Building Your Application
-              </BreadcrumbLink>
+              <BreadcrumbLink href={currentTab}>{currentTab}</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator className="rotate-180" />
             <BreadcrumbItem>
               <BreadcrumbPage>Data Fetching</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+      </div>
+      <div className="flex h-(--header-height) items-center gap-2 px-4">
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
       </div>
     </header>

@@ -3,17 +3,24 @@
 import * as React from "react";
 import {
   BookOpen,
-  Bot,
-  Command,
+  Stethoscope,
+  Users,
+  AlertTriangle,
+  HeartPulse,
+  ClipboardCheck,
+  FileText,
   Frame,
   LifeBuoy,
   Map,
   PieChart,
   Send,
-  Settings2,
-  SquareTerminal,
+  Scroll,
+  TestTube,
+  SquareSplitVerticalIcon,
+  Microscope,
+  Scissors,
+  Calendar,
 } from "lucide-react";
-
 import { NavMain } from "./nav-main";
 import { NavProjects } from "./nav-projects";
 import { NavSecondary } from "./nav-secondary";
@@ -27,6 +34,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const data = {
   user: {
@@ -36,89 +44,69 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
+      title: "التاريخ الطبي",
+      url: "medical-history",
       icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      title: "الزيارة الطبية",
+      url: "medical-visit",
+      icon: Stethoscope,
+    },
+    {
+      title: "تاريخ الاسرة",
+      url: "family-history",
+      icon: Users,
+    },
+    {
+      title: "الحساسية",
+      url: "allergies",
+      icon: AlertTriangle,
+    },
+    {
+      title: "ضغط الدم",
+      url: "blood-pressure",
+      icon: HeartPulse,
+    },
+    {
+      title: "الفحص",
+      url: "examination",
+      icon: ClipboardCheck,
+    },
+    {
+      title: "روشتة",
+      url: "prescription",
+      icon: Scroll,
+    },
+    {
+      title: "التحاليل",
+      url: "lab-tests",
+      icon: TestTube,
+    },
+    {
+      title: "الاشعة",
+      url: "radiology",
+      icon: SquareSplitVerticalIcon,
+    },
+    {
+      title: "الباثولوجي",
+      url: "pathology",
+      icon: Microscope,
+    },
+    {
+      title: "الجراحة",
+      url: "surgery",
+      icon: Scissors,
+    },
+    {
+      title: "ملاحظات",
+      url: "notes",
+      icon: FileText,
+    },
+    {
+      title: "تحديد الموعد",
+      url: "appointment",
+      icon: Calendar,
     },
   ],
   navSecondary: [
@@ -162,22 +150,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
-                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+              <Link href="/">
+                <div className="grid flex-1 text-right text-sm leading-tight">
+                  الصفحة الرئيسية
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
-                </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
