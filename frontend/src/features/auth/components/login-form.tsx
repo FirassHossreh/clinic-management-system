@@ -1,3 +1,9 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, loginFormData } from "../validations/login-validation";
+/* style */
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,10 +11,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<loginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  function onSubmit(data: loginFormData) {
+    console.log(data);
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props} dir="rtl">
       <Card>
@@ -16,11 +34,11 @@ export function LoginForm({
           <CardTitle className="">تسجيل الدخول</CardTitle>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">البريد الإلكتروني</Label>
-                <Input id="email" type="email" required />
+                <Input id="email" type="text" {...register("email")} />
               </div>
               <div className="grid gap-3">
                 <div className="flex justify-between ">
@@ -32,11 +50,19 @@ export function LoginForm({
                     نسيت كلمة السر ؟
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  {...register("password")}
+                />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full cursor-pointer">
-                  تسجيل الدخول
+                <Button
+                  type="submit"
+                  className="w-full cursor-pointer"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "....جاري تسجيل الدخول" : "تسجيل الدخول"}
                 </Button>
                 <Button variant="outline" className="w-full cursor-pointer">
                   تسجيل الدخول مع <FontAwesomeIcon icon={faGoogle} />

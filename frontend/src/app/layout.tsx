@@ -1,3 +1,4 @@
+import ToastConfig from "@/config/toast-config";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body>{children}</body>
+      <body>
+        {children}
+        <ToastConfig />
+      </body>
     </html>
   );
 }
