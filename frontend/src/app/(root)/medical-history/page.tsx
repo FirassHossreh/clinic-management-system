@@ -1,7 +1,12 @@
+"use client";
+import PatientList from "@/components/patient-list";
+
 export default function MedicalHistory() {
   return (
     <>
-      <h1>Medical History</h1>
+      <h1>
+        <PatientList />
+      </h1>
     </>
   );
 }
