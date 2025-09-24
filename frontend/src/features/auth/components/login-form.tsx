@@ -27,6 +27,7 @@ export function LoginForm({
   function onSubmit(data: loginFormData) {
     console.log(data);
   }
+  console.log(errors);
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props} dir="rtl">
       <Card>

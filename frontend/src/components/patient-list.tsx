@@ -76,9 +76,9 @@ const patients = [
   },
 ];
 
-export default function PatientList() {
+export default function PatientList({ TabType }: { TabType: string }) {
   return (
-    <div className="flex gap-2 flex-wrap justify-between ">
+    <div className="flex gap-4 flex-wrap justify-center">
       {patients.map((element, index) => {
         return (
           <div key={index}>
@@ -90,6 +90,7 @@ export default function PatientList() {
               gender={element.gender}
               email={element.email}
               phone={element.phone}
+              TabType={TabType}
             />
           </div>
         );

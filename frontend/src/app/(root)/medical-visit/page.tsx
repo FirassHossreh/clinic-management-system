@@ -1,7 +1,11 @@
+import PatientList from "@/components/patient-list";
+
 export default function MedicalVisit() {
   return (
     <>
-      <h1>medical visit</h1>
+      <h1>
+        <PatientList TabType="الزيارة الطبية" />
+      </h1>
     </>
   );
 }

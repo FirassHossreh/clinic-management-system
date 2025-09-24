@@ -2,8 +2,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 
 type PatientCardProps = {
   title: string;
@@ -13,6 +11,7 @@ type PatientCardProps = {
   gender: string;
   email: string;
   phone: string;
+  TabType: string;
 };
 export default function PatientCard({
   title,
@@ -22,9 +21,8 @@ export default function PatientCard({
   gender,
   email,
   phone,
+  TabType,
 }: PatientCardProps) {
-  const currentTab = useSelector((state: RootState) => state.tab.currentTab);
-
   return (
     <Card className="w-[300px] shadow-md border rounded-xl">
       <CardHeader>
@@ -69,7 +67,11 @@ export default function PatientCard({
             <span dir="ltr">{phone}</span>
           </p>
         </div>
-        <Button className="mt-4 w-full">اضف {currentTab}</Button>
+        {TabType === "none" ? (
+          <></>
+        ) : (
+          <Button className="mt-4 w-full">اضف {TabType}</Button>
+        )}
       </CardContent>
     </Card>
   );

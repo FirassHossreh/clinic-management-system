@@ -33,6 +33,10 @@ export function SiteHeader() {
     { currentTabName: "notes", currentTabNameAr: "الملاحظات" },
     { currentTabName: "appointment", currentTabNameAr: "الموعد" },
   ];
+  const currentTabArabic = tabs.find(
+    tab => tab.currentTabName === currentTab
+  )?.currentTabNameAr;
+
   return (
     <header className="bg-background sticky top-0 z-50 flex w-full items-center border-b">
       <div className="flex h-(--header-height) w-full items-center gap-2 px-4">
@@ -51,17 +55,18 @@ export function SiteHeader() {
           <Breadcrumb className="hidden sm:block">
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href={currentTab}>{currentTab}</BreadcrumbLink>
+                <BreadcrumbLink>{currentTabArabic}</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="rotate-180" />
+              {/* <BreadcrumbSeparator className="rotate-180" />
               <BreadcrumbItem>
                 <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
+              </BreadcrumbItem> */}
             </BreadcrumbList>
           </Breadcrumb>
         )}
       </div>
       <div className="flex h-(--header-height) items-center gap-2 px-4">
+        <Button variant="outline">اضف مريض</Button>
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
       </div>
     </header>

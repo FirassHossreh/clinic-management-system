@@ -5,7 +5,7 @@ export default function MedicalHistory() {
   return (
     <>
       <h1>
-        <PatientList />
+        <PatientList TabType="التاريخ الطبي" />
       </h1>
     </>
   );
