@@ -5,7 +5,7 @@ const dataBaseConnection = () => {
     .then(() => {
       console.log("Database connection completed successfully");
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
 };
