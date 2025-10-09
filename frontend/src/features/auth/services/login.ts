@@ -3,11 +3,8 @@ import { loginFormData } from "../validations/login-validation";
 
 export async function loginService(data: loginFormData) {
   try {
-    const response = await apiClient.post(
-      `/api/v1/clinic-management-system/login`,
-      data
-    );
-    return response.data;
+    const response = await apiClient.post(`/api/v1/auth/login`, data);
+    return response;
   } catch (error) {
     return error;
   }
