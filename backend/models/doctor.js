@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const DoctorSchema = new mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const DoctorSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      match: [/^\S+@\S+\.\S+$/, "Geçerli bir e-posta girin."],
+      match: [/^\S+@\S+\.\S+$/, 'Geçerli bir e-posta girin.'],
     },
     password: { type: String, required: true },
   },
@@ -18,4 +18,4 @@ const DoctorSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("Doctor", DoctorSchema);
+module.exports = mongoose.model('Doctor', DoctorSchema);
