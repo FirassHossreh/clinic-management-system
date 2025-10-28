@@ -1,12 +1,12 @@
-"use client";
-import { AppSidebar } from "../../features/dashboard/components/app-sidebar";
-import { SiteHeader } from "@/features/dashboard/components/site-header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+'use client';
+import { AppSidebar } from '../../features/dashboard/components/app-sidebar';
+import { SiteHeader } from '@/features/dashboard/components/site-header';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
-import { Provider } from "react-redux";
-import { store } from "@/store/store";
-export const iframeHeight = "800px";
-export const description = "A sidebar with a header and a search form.";
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
+export const iframeHeight = '800px';
+export const description = 'A sidebar with a header and a search form.';
 export default function DashboardLayout({
   children,
 }: Readonly<{
@@ -21,7 +21,9 @@ export default function DashboardLayout({
             <div className="flex flex-1">
               <AppSidebar side="right" />
               <SidebarInset>
-                <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>
+                <div className="flex flex-1 flex-col gap-4 p-4 justify-center items-center">
+                  {children}
+                </div>
               </SidebarInset>
             </div>
           </SidebarProvider>

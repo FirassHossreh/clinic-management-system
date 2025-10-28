@@ -47,7 +47,7 @@ export function SiteHeader() {
         </Button>
         <Separator orientation="vertical" className="mr-2 h-4" />
         {currentTab === '' ? (
-          'الصفحة الرئيسية ( جميع المرضة )'
+          <div className="text-[0.8rem] sm:text-base">الصفحة الرئيسية ( جميع المرضة )</div>
         ) : (
           <Breadcrumb className="hidden sm:block">
             <BreadcrumbList>
@@ -63,7 +63,12 @@ export function SiteHeader() {
         )}
       </div>
       <div className="flex h-(--header-height) items-center gap-2 px-4">
-        <Button variant="outline" onClick={() => setIsAddPatientModalOpen(true)}>
+        <Button
+          variant="outline"
+          size="sm"
+          className="text-xs sm:text-sm"
+          onClick={() => setIsAddPatientModalOpen(true)}
+        >
           اضف مريض
         </Button>
         <SearchForm className="w-full sm:ml-auto sm:w-auto" />
